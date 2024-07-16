@@ -1,0 +1,15 @@
+:root {
+    --secondary-main-color:#121212; /* Set primary.main color */
+    --secondary-contrast-text:white /* Set primary.contrastText color */
+  }
+.hero {
+    background-color: var(--secondary-main-color);
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:var(--secondary-contrast-text);
+    gap: 30px;
+  }
+  

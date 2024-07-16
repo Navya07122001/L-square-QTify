@@ -1,0 +1,14 @@
+:root {
+  --primary-main-color: #34c94b; /* Set primary.main color */
+  --primary-contrast-text: #121212; /* Set primary.contrastText color */
+}
+.navbar {
+  background-color: var(--primary-main-color);
+    height: 74px;
+    width: 96.2vw;
+    padding: 0px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
