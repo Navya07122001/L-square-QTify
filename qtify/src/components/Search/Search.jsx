@@ -59,11 +59,9 @@ function Search({ searchData, placeholder }) {
         //Process form data, call API, set state etc.
     };
 
-
     return (
         <div style={{ position: "relative" }}>
             <form
-
                 onSubmit={(e) => {
                     onSubmit(e, value);
                 }}

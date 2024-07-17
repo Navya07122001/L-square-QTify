@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ButtonStyle from "../ButtonStyle/ButtonStyle";
+
 import Logo from "../Logo/Logo";
 import Search from "../Search/Search";
 import styles from "./Navbar.module.css";
+import Button from "../Button/Button";
 
 function Navbar({ searchData }) {
   return (
@@ -15,7 +16,7 @@ function Navbar({ searchData }) {
         placeholder="Search a song of your choice"
         searchData={searchData}
       />
-      <ButtonStyle children="Give Feedback"/>
+     <Button children={"Give Feedback"}/>
     </nav>
   );
 }
