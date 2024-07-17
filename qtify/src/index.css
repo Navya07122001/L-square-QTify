@@ -1,3 +1,9 @@
+:root {
+  --color-primary: #34c94b;
+  --color-white: #ffffff;
+  --color-black: #121212;
+}
+
 @font-face {
   font-family: 'Poppins';
   src: url('./fonts/Poppins-Regular.ttf') format('truetype');
@@ -12,9 +18,13 @@
 
 
 body {
+  background-color: var(--color-black);   /*now use above 3 theme colours as a variable in whole project's css*/
+  color: var(--color-white);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue','Poppins', sans-serif;
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
