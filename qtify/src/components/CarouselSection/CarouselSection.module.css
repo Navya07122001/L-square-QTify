@@ -1,0 +1,55 @@
+.carouselContainer {
+    display: flex;
+    align-items: center;
+  
+    position: relative;
+    width: 100%;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    margin-left: 8px;
+    
+  }
+  
+  .leftbtn, .rightbtn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-90%);
+    z-index: 10;
+  }
+  
+  .leftbtn {
+    left: -20px;
+  }
+  
+  .rightbtn {
+    right: 20px;
+  }
+  
+  .sliderbtn img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .mySwiper {
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-scrollbar {
+    background: #f1f1f1;
+  }
+  
+  .swiper-scrollbar-drag {
+    background: #888;
+  }
+  

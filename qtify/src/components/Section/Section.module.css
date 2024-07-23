@@ -1,0 +1,29 @@
+.design{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:10px;
+   
+    
+}
+.frame{
+    margin-left: 31px;
+    margin-right: 31px;
+}
+.text{
+    font-family:"Poppins";
+    color:var(--color-primary);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+}
+.text:hover{
+    cursor: pointer;
+}
+.text1{
+    font-family:"Poppins";
+    color:var(--color-white);
+    font-weight:600;
+    font-size: 20px;
+    line-height: 30px;
+
+}
