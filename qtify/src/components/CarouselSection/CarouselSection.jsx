@@ -1,43 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from "./CarouselSection.module.css";
-import leftButton from '../../assets/leftbutton.svg'
+import leftButton from '../../assets/leftbutton.svg';
 import rightButton from '../../assets/rightbutton.svg';
 import CardStyle from '../CardStyle/CardStyle';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Keyboard, Scrollbar, Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 function CarouselSection({ name, albums }) {
-    const [swiperRef, setSwiperRef] = useState(null);
     const sanitizedId = name.split(" ").join("");
-
-    useEffect(() => {
-        if (swiperRef) {
-            const handleReachBeginning = () => setIsBeginning(true);
-            const handleFromBeginning = () => setIsBeginning(false);
-            const handleReachEnd = () => setIsEnd(true);
-            const handleFromEnd = () => setIsEnd(false);
-
-            swiperRef.on('reachBeginning', handleReachBeginning);
-            swiperRef.on('fromEdge', handleFromBeginning);
-            swiperRef.on('reachEnd', handleReachEnd);
-            swiperRef.on('fromEdge', handleFromEnd);
-
-            return () => {
-                swiperRef.off('reachBeginning', handleReachBeginning);
-                swiperRef.off('fromEdge', handleFromBeginning);
-                swiperRef.off('reachEnd', handleReachEnd);
-                swiperRef.off('fromEdge', handleFromEnd);
-            };
-        }
-    }, [swiperRef]);
+    const swiperRef = useRef(null);
 
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+
+    useEffect(() => {
+        if (swiperRef.current) {
+            const swiperInstance = swiperRef.current.swiper;
+
+            const handleSlideChange = () => {
+                setIsBeginning(swiperInstance.isBeginning);
+                setIsEnd(swiperInstance.isEnd);
+            };
+
+            swiperInstance.on('slideChange', handleSlideChange);
+
+            // Cleanup function
+            return () => {
+                swiperInstance.off('slideChange', handleSlideChange);
+            };
+        }
+    }, [albums]);
+
+    useEffect(() => {
+        if (swiperRef.current) {
+            const swiperInstance = swiperRef.current.swiper;
+            swiperInstance.slideTo(0, 1);
+        }
+    }, [albums]);
 
     return (
         <div className={styles.carouselContainer}>
@@ -45,37 +48,30 @@ function CarouselSection({ name, albums }) {
                 <button
                     className={`${styles.leftbtn} ${styles.sliderbtn}`}
                     id={`${sanitizedId}-left`}
-                    onClick={() => swiperRef.slidePrev()}
+                    onClick={() => swiperRef.current.swiper.slidePrev()}
                 >
                     <img src={leftButton} alt="Left Button" />
                 </button>
             )}
             <Swiper
+                ref={swiperRef}
                 initialSlide={0}
-                style={{padding:"0px 20px"}}
-                onSwiper={setSwiperRef}
+                style={{ padding: "0px 20px" }}
                 slidesPerView={"auto"}
                 centeredSlides={false}
-
-                spaceBetween={40}
-                breakpoints={{
-                    769: {
-                        slidesPerView: 8,
-                        slidesPerGroup: 8,
-                    },
-                }}
-               allowTouchMove
+              
+                spaceBetween={65}
+                
+                allowTouchMove
                 navigation={{
                     nextEl: `#${sanitizedId}-right`,
                     prevEl: `#${sanitizedId}-left`,
                 }}
-                
                 modules={[Navigation]}
                 className="mySwiper"
-                
             >
                 {albums.map((eachalbum, index) => (
-                    <SwiperSlide key={index} virtualIndex={index} style={{width:'139px'}}>
+                    <SwiperSlide key={index} virtualIndex={index} style={{ width: '139px' }}>
                         <CardStyle eachalbum={eachalbum} />
                     </SwiperSlide>
                 ))}
@@ -84,12 +80,11 @@ function CarouselSection({ name, albums }) {
                 <button
                     className={`${styles.rightbtn} ${styles.sliderbtn}`}
                     id={`${sanitizedId}-right`}
-                    onClick={() => swiperRef.slideNext()}
+                    onClick={() => swiperRef.current.swiper.slideNext()}
                 >
                     <img src={rightButton} alt="Right Button" />
                 </button>
             )}
-
         </div>
     );
 }
