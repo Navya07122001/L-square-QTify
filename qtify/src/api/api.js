@@ -22,3 +22,14 @@ export const NewalbumData=async()=>{
     }
     
 }
+export const SongsData=async()=>{
+    try{
+    const albumdata=await axios.get(`${endpoint}/songs`)
+    return albumdata.data;
+    }
+    catch(e)
+    {
+        return null;
+    }
+    
+}

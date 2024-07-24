@@ -1,0 +1,19 @@
+.tabitems {
+   
+ 
+.tabitem {
+    color: white;
+    font-family: 'Poppins', sans - serif;
+    text-transform: capitalize;
+    padding: 10px;
+    width: 68px;
+    height: 24px;
+    
+}
+.tabitem:active{
+    color:var(--color-white)
+}
+
+
+
+}

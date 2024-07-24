@@ -72,7 +72,7 @@ function CarouselSection({ name, albums }) {
             >
                 {albums.map((eachalbum, index) => (
                     <SwiperSlide key={index} virtualIndex={index} style={{ width: '139px' }}>
-                        <CardStyle eachalbum={eachalbum} />
+                        <CardStyle eachalbum={eachalbum} title={name}/>
                     </SwiperSlide>
                 ))}
             </Swiper>

@@ -9,7 +9,8 @@ import styles from './CardStyle.module.css';
 import Chip from '@mui/material/Chip';
 
 
-function CardStyle({eachalbum}) {
+function CardStyle({eachalbum,title}) {
+  console.log(title)
 
   return (
     <div style={{height:'232px',width:'159px'}}>
@@ -25,10 +26,16 @@ function CardStyle({eachalbum}) {
 
           />
           <CardContent sx={{padding:'5px'}} >
-            <Chip label={eachalbum.follows+" Follows"} sx={{ backgroundColor: 'var(--color-black)', color: 'var(--color-white)',
+            {title==="Songs"? <Chip label={eachalbum.likes+" Likes"} sx={{ backgroundColor: 'var(--color-black)', color: 'var(--color-white)',
                fontFamily: 'Poppins',
                 margin:'1.5px',
-                 height: '23px', width: '95px', left: '6px' ,fontWeight:'400',fontSize:'10px',lineHeight:'15px',gap:'1px'}} />
+                 height: '23px', width: '95px', left: '6px' ,fontWeight:'400',fontSize:'10px',lineHeight:'15px',gap:'1px'}} />:
+                 <Chip label={eachalbum.follows+" Follows"} sx={{ backgroundColor: 'var(--color-black)', color: 'var(--color-white)',
+                  fontFamily: 'Poppins',
+                   margin:'1.5px',
+                    height: '23px', width: '95px', left: '6px' ,fontWeight:'400',fontSize:'10px',lineHeight:'15px',gap:'1px'}} />
+                 }
+            
 
           </CardContent>
          
