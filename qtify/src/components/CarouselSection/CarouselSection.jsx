@@ -51,24 +51,26 @@ function CarouselSection({ name, albums }) {
                 </button>
             )}
             <Swiper
+                initialSlide={0}
+                style={{padding:"0px 20px"}}
                 onSwiper={setSwiperRef}
-                slidesPerView={10}
+                slidesPerView={"auto"}
                 centeredSlides={false}
-                slidesPerGroupSkip={2}
-                grabCursor={true}
+
+                spaceBetween={40}
                 breakpoints={{
                     769: {
                         slidesPerView: 8,
                         slidesPerGroup: 8,
                     },
                 }}
-               
+               allowTouchMove
                 navigation={{
                     nextEl: `#${sanitizedId}-right`,
                     prevEl: `#${sanitizedId}-left`,
                 }}
                 
-                modules={[Keyboard, Scrollbar, Navigation, Pagination]}
+                modules={[Navigation]}
                 className="mySwiper"
                 
             >
