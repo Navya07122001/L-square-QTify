@@ -11,15 +11,24 @@ import Chip from '@mui/material/Chip';
 
 function CardStyle({eachalbum,title}) {
   console.log(title)
+  const handleClick=()=>{
+    if(title==="Songs")
+    {
+
+    }
+    else{
+      
+    }
+
+  }
 
   return (
     <div style={{height:'232px',width:'159px'}}>
-      <Card sx={{ height: '205px', width: '159px', borderRadius: '15px' }}>
+      <Card sx={{ height: '205px', width: '159px', borderRadius: '15px' }} onClick={handleClick}>
         <CardActionArea>
           <CardMedia
             component="img"
             height='170px'
-
             image={eachalbum.image}
             sx={{ borderRadius: '10px 10px 0px 0px' }}
             alt="green iguana"

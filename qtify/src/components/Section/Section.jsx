@@ -76,7 +76,7 @@ function Section({ title, albums }) {
                     : (
                         <>
                             <Tabs handleChange={handleChange} value={value} />
-                            <CarouselSection albums={filterdata} name={title} />
+                            <CarouselSection albums={filterdata} name={title}  />
                         </>
                     )}
 

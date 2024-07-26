@@ -33,3 +33,14 @@ export const SongsData=async()=>{
     }
     
 }
+
+export const faqData=async()=>{
+    try{
+        const albumdata=await axios.get(`${endpoint}/faq`)
+        return albumdata.data;
+    }
+    catch(e)
+    {
+        return null
+    }
+}
